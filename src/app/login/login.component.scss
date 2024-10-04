@@ -1,0 +1,122 @@
+/* Container de Login */
+.login-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Centraliza conteúdo no container */
+}
+
+.login-container h2 {
+  color: #0073e6; /* Azul escuro */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinha os elementos dentro do formulário */
+}
+
+.login-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.login-container input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.login-container input:focus {
+  border-color: #0073e6; /* Azul claro ao focar */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 115, 230, 0.5); /* Efeito de foco suave */
+}
+
+.login-container button {
+  background-color: #28a745; /* Verde */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+  background-color: #218838; /* Verde escuro */
+}
+
+.login-container button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Botão de Login com GitHub */
+.login-with-github {
+  background-color: #333; /* Preto */
+  color: white;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* O botão ocupa toda a largura */
+  max-width: 300px; /* Limita o tamanho máximo */
+  margin: 0 auto 20px; /* Centraliza o botão */
+  transition: background-color 0.3s;
+}
+
+.login-with-github img.github-icon {
+  margin-right: 10px; /* Espaço entre o ícone e o texto */
+  width: 20px;
+  height: 20px;
+}
+
+.login-with-github:hover {
+  background-color: #000; /* Preto mais escuro */
+}
+
+/* Mensagem de erro */
+.login-container div.error-message {
+  color: #dc3545; /* Vermelho */
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Estilo Responsivo */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .login-container button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .login-container input {
+    font-size: 14px;
+  }
+
+  .login-with-github {
+    max-width: 100%; /* Ocupa toda a largura da tela em dispositivos móveis */
+  }
+}

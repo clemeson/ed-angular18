@@ -1,0 +1,178 @@
+<!-- Lista de Usuários -->
+<!-- Lista de Usuários -->
+<div *ngIf="!isSingleUserView">
+  <h2>Lista de Usuários</h2>
+  
+  <button (click)="openCreateUserModal()">Criar Novo Usuário</button>
+  <button (click)="logout()">Logout</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Papel</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.status }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button (click)="openUpdateStatusModal(user)">
+            Atualizar Status
+          </button>
+          <button (click)="openUpdateRoleModal(user)">Atualizar Papel</button>
+          <!-- user-list.component.html -->
+          <button (click)="deleteUser(user.id)">Excluir Usuário</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Controles de Paginação -->
+  <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="p === 1">Anterior</button>
+
+    <span>Página {{ p }} de {{ totalUsers / limit | ceil }}</span>
+
+    <button (click)="nextPage()" [disabled]="p === maxPages">Próximo</button>
+  </div>
+</div>
+
+<div *ngIf="isSingleUserView">
+  <h2>Seus Dados</h2>
+  <button (click)="logout()">Logout</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Papel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ currentUser?.id }}</td>
+        <td>{{ currentUser?.name }}</td>
+        <td>{{ currentUser?.email }}</td>
+        <td>{{ currentUser?.status }}</td>
+        <td>{{ currentUser?.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para Atualizar o Status do Usuário -->
+<div *ngIf="isUpdateStatusModalOpen" class="modal">
+  <div class="modal-content">
+    <h3>Atualizar Status do Usuário</h3>
+    <form (ngSubmit)="updateStatus()">
+      <label for="status">Status:</label>
+      <select
+        id="status"
+        [(ngModel)]="selectedUser.status"
+        name="status"
+        required
+      >
+        <option value="ACTIVE">Ativo</option>
+        <option value="INACTIVE">Inativo</option>
+      </select>
+
+      <button type="submit">Salvar</button>
+      <button type="button" (click)="closeModal()">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal para Atualizar o Papel do Usuário -->
+<div *ngIf="isUpdateRoleModalOpen" class="modal">
+  <div class="modal-content">
+    <h3>Atualizar Papel do Usuário</h3>
+    <form (ngSubmit)="updateRole()">
+      <label for="role">Papel do Usuário:</label>
+      <select id="role" [(ngModel)]="selectedUser.role" name="role" required>
+        <option value="USER">Usuário</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+
+      <label for="password">Senha do Administrador:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+
+      <button type="submit">Salvar</button>
+      <button type="button" (click)="closeModal()">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal para Criar Novo Usuário -->
+<!-- Modal para Criar Novo Usuário -->
+<div *ngIf="isCreateUserModalOpen" class="modal">
+  <div class="modal-content">
+    <h3>Criar Novo Usuário</h3>
+    <form (ngSubmit)="createUser()">
+      <!-- Nome -->
+      <label for="name">Nome:</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="newUser.name"
+        name="name"
+        required
+      />
+
+      <!-- Email -->
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="newUser.email"
+        name="email"
+        required
+        email
+      />
+
+      <!-- Senha -->
+      <label for="password">Senha:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="newUser.password"
+        name="password"
+        required
+      />
+
+      <!-- Status -->
+      <label for="status">Status:</label>
+      <select id="status" [(ngModel)]="newUser.status" name="status" required>
+        <option value="ACTIVE">Ativo</option>
+        <option value="INACTIVE">Inativo</option>
+      </select>
+
+      <!-- Role (Papel do usuário) -->
+      <label for="role">Papel do Usuário:</label>
+      <select id="role" [(ngModel)]="newUser.role" name="role">
+        <option value="USER">Usuário</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+
+      <button type="submit">Criar</button>
+      <button type="button" (click)="closeModal()">Cancelar</button>
+    </form>
+  </div>
+</div>

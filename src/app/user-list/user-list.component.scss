@@ -1,0 +1,282 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+  z-index: 1000; /* Colocar o modal acima de outros elementos */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 50%; /* Largura do modal */
+  max-width: 600px; /* Limita a largura máxima do modal */
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra do modal */
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+button {
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* src/app/user-list/user-list.component.scss */
+
+/* ... estilos anteriores */
+
+/* Estilos para o Spinner */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Estilos globais */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f8ff; /* Azul claro suave */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: #0073e6; /* Azul escuro */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+table th {
+  background-color: #0073e6; /* Azul escuro */
+  color: white;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #e0f7fa; /* Azul claro para hover */
+}
+
+button {
+  background-color: #28a745; /* Verde */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Espaço entre botões */
+}
+
+button:hover {
+  background-color: #218838; /* Verde escuro */
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Controles de paginação */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+}
+
+.pagination-controls span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Estilos dos Modais */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalOpen 0.3s ease;
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal h3 {
+  color: #0073e6;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.modal input, .modal select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal button[type="submit"] {
+  background-color: #0073e6; /* Azul escuro */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.modal button[type="button"] {
+  background-color: #dc3545; /* Vermelho */
+  margin-left: 10px;
+}
+
+.modal button[type="submit"]:hover {
+  background-color: #005bb5; /* Azul mais escuro */
+}
+
+.modal button[type="button"]:hover {
+  background-color: #c82333; /* Vermelho mais escuro */
+}
+
+/* Centralizar conteúdo da tabela em visualização única */
+.single-user-view table {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Botões e elementos gerais */
+button.open-create-user, button.logout {
+  margin: 10px 10px 20px 0;
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button.open-create-user:hover, button.logout:hover {
+  background-color: #005bb5;
+}
+
+/* Estilo responsivo para botões */
+.buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espaçamento entre botões */
+  margin-bottom: 20px;
+}
+
+.buttons-group button {
+  flex: 1 1 auto; /* Permite que os botões se ajustem automaticamente */
+}
+
+@media (max-width: 768px) {
+  .buttons-group {
+    flex-direction: column; /* Coloca os botões em uma coluna em telas menores */
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  table, th, td {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
