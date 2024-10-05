@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../environments/environment.prod';
 @Component({
   selector: 'app-callback',
   templateUrl: './callback.component.html',
@@ -14,7 +14,7 @@ export class CallbackComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  private apiUrl = 'http://ec2-52-90-9-193.compute-1.amazonaws.com/auth/github';
+  private readonly apiUrl: string = environment.apiUrl;
 
   ngOnInit(): void {
     // Captura o código de autorização da URL
@@ -23,9 +23,9 @@ export class CallbackComponent implements OnInit {
 
       if (code) {
         // Envia o código para o backend para obter o token JWT
-    
+
         this.http
-          .post(this.apiUrl, {
+          .post(`${this.apiUrl}/auth/github`, {
             code,
           })
           .subscribe(
